@@ -20,6 +20,7 @@ function readJenkinsJobInfo (jobName) {
 function createJenkinsJob (jenkinsJobInfo) {
     return post(getUrl('createJenkinsJob'), {
         'job-name': jenkinsJobInfo.projectName,
+        'alias-job-name': jenkinsJobInfo.projectAliasName || '',
         'gerrit-project-url': jenkinsJobInfo.projectUrl,
         'gerrit-branch-name': jenkinsJobInfo.branchName,
         'email-recipient-list': jenkinsJobInfo.emailRecipientList.map(emailRecipient => emailRecipient.emailAddress)
@@ -29,6 +30,7 @@ function createJenkinsJob (jenkinsJobInfo) {
 function updateJenkinsJob (jenkinsJobInfo) {
     return post(getUrl('updateJenkinsJob'), {
         'job-name': jenkinsJobInfo.projectName,
+        'alias-job-name': jenkinsJobInfo.projectAliasName || '',
         'gerrit-project-url': jenkinsJobInfo.projectUrl,
         'gerrit-branch-name': jenkinsJobInfo.branchName,
         'email-recipient-list': jenkinsJobInfo.emailRecipientList.map(emailRecipient => emailRecipient.emailAddress)

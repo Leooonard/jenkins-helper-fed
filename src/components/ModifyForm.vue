@@ -12,6 +12,9 @@
                     </el-form-item>
                 </el-col>
         </el-form-item>
+        <el-form-item v-if="hasLoadProjectInfo" label="项目别名" prop="projectAliasName">
+            <el-input v-model="form.projectAliasName"></el-input>
+        </el-form-item>
         <el-form-item v-if="hasLoadProjectInfo" label="项目路径" prop="projectUrl">
             <el-input v-model="form.projectUrl"></el-input>
         </el-form-item>
@@ -55,6 +58,7 @@ export default {
             hasLoadProjectInfo: false,
             form: {
                 projectName: '',
+                projectAliasName: '',
                 projectUrl: '',
                 branchName: '',
                 emailRecipientList: []
@@ -115,6 +119,7 @@ export default {
             readJenkinsJobInfo(this.form.projectName)
             .then(result => {
                 this.form.projectUrl = result.data.projectUrl;
+                this.form.projectAliasName = result.data.aliasJobName;
                 this.form.branchName = result.data.projectBranch;
                 this.form.emailRecipientList = result.data.emailRecipientList.map(emailAddress => ({emailAddress}));
                 this.hasLoadProjectInfo = true;

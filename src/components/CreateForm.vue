@@ -3,6 +3,9 @@
         <el-form-item label="项目名" prop="projectName">
             <el-input v-model="form.projectName"></el-input>
         </el-form-item>
+        <el-form-item label="项目别名" prop="projectAliasName">
+            <el-input v-model="form.projectAliasName"></el-input>
+        </el-form-item>
         <el-form-item label="项目路径" prop="projectUrl">
             <el-input v-model="form.projectUrl"></el-input>
         </el-form-item>
@@ -44,6 +47,7 @@ export default {
       return {
           form: {
               projectName: '',
+              projectAliasName: '',
               projectUrl: '',
               branchName: '',
               emailRecipientList: []
